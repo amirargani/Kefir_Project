@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ManageAboutKefir";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div ng-controller="AboutKefirController">
+    <i ng-click="SendData()" style="font-size:30px;color:#17a10c;float:left;margin-left:20px;cursor:pointer" class="icon-check"></i>
+
+
+    <input  style="color:black" class="form-control" ng-model="Obj.AboutKefirTitle" placeholder="عنوان" />
+    <textarea  ng-model="Obj.AboutKefirText" class="form-control" placeholder="متن اصلی" style="color:black; height:300px; margin-top:20px">
+        
+    </textarea>
+</div>
+@section SectionJs
+{
+<script src="~/Areas/Admin/Scripts/Angu_Manage_AboutKefir.js"></script>
+    
+}

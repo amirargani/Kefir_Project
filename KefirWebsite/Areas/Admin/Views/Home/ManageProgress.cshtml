@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "ManageProgress";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div ng-controller="ProgressTitleController" class="col-md-12">
+
+        <div style="width:20%">تنظیم عنوان Progress:</div>
+        <span>عنوان</span>
+        <input ng-model="Title.AbstractTitle" class="form-control" style="width:20%;" placeholder="عنوان" type="text" />
+        <span style="float:right">متن اصلی</span>
+        <br />
+
+        <input ng-model="Title.AbstractText" class="form-control" style="float:right;width:95%" placeholder="متن اصلی" type="text" />
+        <button  ng-click="SendData()" style="margin-right:15px" class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
+    </div>
+</div>
+<div ng-controller="ProgressController" class="row">
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h3 style="font-family:yekan;float:right">مدیریت Progress</h3>
+                <a ng-click="ClearData()" style="margin-top:25px; font-size:20px; float:left" href="#myModal" data-toggle="modal" class="btn btn-xs btn-primary right">
+                    <i class="icon-plus"></i>
+                </a>
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">عنوان</th>
+                        <th style="text-align:center">متن</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in Progresses">
+                        <td>
+                            {{x.ProgressTitle}}
+                        </td>
+                        <td>
+                            {{x.ProgressText}}
+                        </td>
+                        <td style="width:70px">
+                            <a href="#myModal" ng-click="FillData(x)" data-toggle="modal"><button class="btn btn-primary btn-xs BtnEdit"><i class="icon-pencil"></i></button></a>
+                            <button ng-click="DeleteData(x.ProgressId)" class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">&nbsp;</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="modalForm" role="form">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">عنوان</label>
+                            <input class="form-control" ng-model="currentProgress.ProgressTitle" style="color:black" id="ProgressTitle" name="ProgressTitle" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">متن</label>
+                            <textarea ng-model="currentProgress.ProgressText" style="color:black;resize:vertical;height:250px" class="form-control" id="ProgressText" name="ProgressText"></textarea>
+                        </div>
+
+                        <button ng-click="SaveData()" id="BtnSendData" type="button" class="btn btn-success">ذخیره</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section SectionJs
+{
+
+    <script src="~/Areas/Admin/Scripts/Angu_Mange_Progress.js"></script>
+
+}
+
+

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "ManageContactUs";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div id="ele" ng-controller="ContactUsController" class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h3 style="font-family:yekan;float:right">مدیریت پیام ها</h3>
+
+                <div>
+
+                    <div  style="float:left;margin-top:20px" class="switch switch-square"
+                         data-on-label="<i class=' icon-ok'></i>"
+                         data-off-label="<i class='icon-remove'></i>">
+                        <input onchange="changeCheck()" id="mySwitch" type="checkbox" />
+                    </div>
+
+                    <span style="float:left;margin-top:20px;margin-left:5px">پیام های جدید</span>
+                </div>
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">نام</th>
+                        <th style="text-align:center">موضوع</th>
+                        <th style="text-align:center">وضعیت</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in Messages">
+                        <td style="text-align:center">
+                            {{x.ContactUsName}}
+                        </td>
+                        <td style="text-align:center">
+                            {{x.ContactUsSubject}}
+                        </td>
+                        <td  style="text-align:center;">
+                            <span ng-model="getStatus(x)" style="color:black; background-color: {{x.Color}}" class="label label-mini">
+                                {{x.StatusText}}
+                            </span>
+                        </td>
+
+                        <td style="width:70px">
+                            <button ng-click="FillData(x)" class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
+                            <button ng-click="DeleteData(x.ContactUsId)" class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close"  type="button">×</button>
+                    <h4 class="modal-title">&nbsp;</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="modalForm" role="form">
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">پیام </label>
+                            <textarea ng-model="MessageText" style="color:black;height:500px;cursor:default" readonly  class="form-control" id="ProgressText" name="ProgressText"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section SectionJs
+{
+  
+    <script src="~/Areas/Admin/Scripts/Angu_Manage_ContactUs.js"></script>
+    <script>
+        mySwitch.checked = true;
+    </script>
+
+    <!--custom switch-->
+    <script src="~/Areas/Admin/js/bootstrap-switch.js"></script>
+    <!--custom tagsinput-->
+    <script src="~/Areas/Admin/js/jquery.tagsinput.js"></script>
+    <!--custom checkbox & radio-->
+    <!--common script for all pages-->
+    <!--script for this page-->
+    <script src="~/Areas/Admin/js/form-component.js"></script>
+}
+
+

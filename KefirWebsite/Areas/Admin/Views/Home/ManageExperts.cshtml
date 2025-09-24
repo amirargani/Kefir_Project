@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "ManageExperts";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div ng-controller="ExpertController" class="row">
+     <div class="col-md-12">
+
+        <div style="width:20%">تنظیم عنوان کارمندان:</div>
+        <span>عنوان</span>
+        <input ng-model="Title.ExpertTitle" class="form-control" style="width:20%;" placeholder="عنوان" type="text" />
+        <span style="float:right">متن اصلی</span>
+        <br />
+
+        <input ng-model="Title.ExpertText" class="form-control" style="float:right;width:95%" placeholder="متن اصلی" type="text" />
+        <button ng-click="SendTitleData()" style="margin-right:15px" class="btn btn-success btn-xs"><i class="icon-ok"></i></button>
+    </div>
+    <br />
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h3 style="font-family:yekan;float:right">مدیریت کارشناسان</h3>
+                <a ng-click="ClearData()" id="BtnAdd" style="margin-top:25px; font-size:20px; float:left" href="#myModal" data-toggle="modal" class="btn btn-xs btn-primary right">
+                    <i class="icon-plus"></i>
+                </a>
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">نام و نام خانوادگی</th>
+                        <th style="text-align:center">تخصص</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in Experts">
+                        <td>
+                            {{x.ExpertFullName}}
+                        </td>
+                        <td>
+                            {{x.ExpertSkill}}
+                        </td>
+
+                        <td style="width:70px">
+                            <button ng-click="FillData(x.ExpertId)" class="btn btn-primary btn-xs BtnEdit"><i class="icon-pencil"></i></button>
+                            <button ng-click="DeleteData(x.ExpertId)" class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">&nbsp;</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="modalForm" role="form">
+                        <input class="form-control" id="ExpertId" ng-model="Expert.ExpertId" style="color:black" type="hidden">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">نام و نام خانوادگی</label>
+                            <input class="form-control" id="ExpertFullName" ng-model="Expert.ExpertFullName" name="ExpertFullName" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">تخصص</label>
+                            <input class="form-control" id="ExpertSkill" ng-model="Expert.ExpertSkill" name="ExpertSkill" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">آپلود عکس</label>
+                            <input id="imgUpload" name="imgUpload" type="file" />
+                        </div>
+                        <button ng-click="SaveData()" id="BtnSendData" type="button" class="btn btn-success">ذخیره</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section SectionJs
+{
+    
+<script src="~/Areas/Admin/Scripts/Angu_Manage_Expert.js"></script>
+}
+
+
