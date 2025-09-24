@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    
+    <title>دوغ کفـیـر</title>
+
+
+   
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/lightbox.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link id="css-preset" href="../css/presets/preset1.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet">
+    <link href="css/alertify.bootstrap.css" rel="stylesheet" />
+    <link href="css/alertify.core.css" rel="stylesheet" />
+    <link href="css/alertify.default.css" rel="stylesheet" />
+    <!--angular-->
+    <!--angular-->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="../images/favicon.ico">
+</head>
+<body ng-app="myApp">
+
+    <div class="preloader">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </div>
+    <header id="home">
+        <div ng-controller="ControllerSlider" id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <div class="carousel-inner" id="SpecialP">
+
+            
+
+                <div ng-repeat="x in slides track by $index" class="item {{getActive($index)}}" style="background-image: url(..{{x.SlidePicAddress}})">
+
+                    <div class="caption">
+                        <h1 class="animated fadeInLeftBig">
+                            {{x.SlideSimpleTitle}}
+                            <span>{{x.SlideCssTitle}}</span>
+                        </h1>
+                        <p class="animated fadeInRightBig" style="font-size: 13px;">
+                            {{x.SlidePicDesc}}
+                        </p>
+                        <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" ng-click="SetSlideText(x)" data-target="#myModal">ادامـه مـطـلـب</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+            <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+            <a id="tohash" href="#kefir"><i class="fa fa-angle-down"></i></a>
+        </div><!--/#home-slider-->
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#028fcc">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="text-align:center">توضیحات</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalBody">...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="main-nav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <h1>
+                            <img class="img-responsive" src="../images/logo.png" alt="logo">
+                        </h1>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="scroll active">
+                            <a id="home" href="#home">خـانـه</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#kefir">کـفـیـر</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#about-us">دربــاره کـفـیـر</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#portfolio">گــارلـری تـصـاویـر</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#team">تـیـم مـا</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#blog">اخــبــار</a>
+                        </li>
+                        <li class="scroll">
+                            <a href="#contact">تــمــاس بـا مـا</a>
+                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModallogin">ورود</a>
+                            </li>
+                            <li>
+                                <a href="" data-toggle="modal" data-target="#myModalregistry">عــضـویـت</a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li>
+                                <a href="/Admin/Home/Index">پنل مدیریت</a>
+                            </li>
+                            <li>
+                                <a href="/Home/SignOut">خروج</a>
+                            </li>
+                        }
+
+                        <li  role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                پرسش و پاسخ <span class="caret"></span>
+                            </a>
+                            <ul  class="dropdown-menu">
+                                <li>
+                                    <a class="QLink"  href="/Home/Faq">
+                                        سوالات متداول
+                                    </a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a class="QLink"  href="/Home/Question">
+                                        پرسیدن سوال
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div><!--/#main-nav-->
+    </header><!--/#home-->
+    <section id="kefir">
+        <div  ng-controller="ControllerProgress" class="container">
+            <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="row">
+                    <div class="text-center col-sm-8 col-sm-offset-2">
+                        <h2>{{Title.AbstractTitle}}</h2>
+                        <p>
+                            {{Title.AbstractText}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center our-kefir">
+                <div class="row">
+
+
+                    <div ng-repeat="x in progresses track by $index">
+                        <div class="col-sm-offset-4 col-sm-4">
+                            <div class="service-icon">
+                                <i class="fa fa-flask"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3>{{x.ProgressTitle}}</h3>
+                                <p style="font-size: 11.5px; font-weight: bold; text-align: justify;">
+                                    {{x.ProgressText}}
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div style="{{getSyle($index)}}"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#kefir-->
+    <section id="about-us" class="parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 style="color: #ffffff; font-weight: bold; text-shadow: 1px 1px 2px #000000" > @ViewBag.CupTitle </h2>
+                    <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-skill  fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <p class="lead" style="text-shadow: 1px 1px 2px #000000"  >@ViewBag.CupFirstTitle</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="@ViewBag.CupFirstPercent" style="float: right; text-align: center; color: #000000;">@ViewBag.CupFirstPercent %</div>
+                            </div>
+                        </div>
+                        <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+                            <p class="lead" style="text-shadow: 1px 1px 2px #000000" >@ViewBag.CupSecoundTitle</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="@ViewBag.CupSecoundPercent" style="float: right; text-align: center; color: #000000;" >@ViewBag.CupSecoundPercent %</div>
+                            </div>
+                        </div>
+                        <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+                            <p class="lead" style="text-shadow: 1px 1px 2px #000000" >@ViewBag.CupThirdTitle</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="@ViewBag.CupThirdPercent" style="float: right; text-align: center; color: #000000;" >@ViewBag.CupThirdPercent %</div>
+                            </div>
+                        </div>
+                        <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            <p class="lead" style="text-shadow: 1px 1px 2px #000000"  >@ViewBag.CupFourthTitle</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="@ViewBag.CupFourthPercent" style="float: right; text-align: center; color: #000000;" >@ViewBag.CupFourthPercent %</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h2 style="color: #ffffff; font-weight: bold; text-shadow: 1px 1px 2px #000000">@ViewBag.AboutKefirTitle</h2>
+                        <p style="color: #ffffff; font-size: 11.5px; font-weight: bold; text-align: justify; text-shadow: 1px 1px 2px #000000">
+                            @Html.Raw(@ViewBag.AboutKefirText)
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#about-us-->
+    <section ng-controller="ControllerGallery" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2>{{Title.GalleryTitle}}</h2>
+                    <p>
+                       {{Title.GalleryText}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row" >
+                <div ng-repeat="x in gallery" class="col-sm-3">
+                    <div class="folio-item fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="folio-image">
+                            <img class="img-responsive" src={{x.GalleryPicAddress}} alt="">
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-text">
+                                    <div class="folio-info">
+                                        <h3>زمان  ثبت</h3>
+                                        <p> {{ConvertDate(x)}}</p>
+                                    </div>
+                                    <div class="folio-overview">
+                                        <span class="folio-expand"><a href={{x.GalleryPicAddress}} data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="portfolio-single-wrap">
+            <div id="portfolio-single">
+            </div>
+        </div><!-- /#portfolio-single-wrap -->
+    </section><!--/#portfolio-->
+    <section id="features" class="parallax">
+        <div class="container">
+            <div class="row count">
+                <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <i class="fa fa-user"></i>
+                    <h3 class="timer">@ViewBag.UserCount</h3>
+                    <p>کـاربـران  عـضـو</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+                    <i class="fa fa-desktop"></i>
+                    <h3 class="timer">@HttpContext.Current.Application["Online"]</h3>
+                    <p>کـاربـران آنلاین</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+                    <i class="fa fa-trophy"></i>
+                    <h3 class="timer">@ViewBag.AwardCount</h3>
+                    <p>جـوایـز مـا</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <i class="fa fa-comment-o"></i>
+                    <h3 class="timer">@ViewBag.MessageCount</h3>
+                    <p>پیام های خوانده شده</p>
+                </div>
+            </div>
+        </div>
+    </section><!--/#features-->
+    <section id="team">
+        <div ng-controller="ControllerExperts" class="container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+                    <h2>{{Title.ExpertTitle}}</h2>
+                    <p>
+                        {{Title.ExpertText}}
+                    </p>
+                </div>
+            </div>
+            <div class="team-members">
+                <div class="row" >
+
+                    <div class="col-sm-3" ng-repeat="x in experts">
+                        <div class="team-member  flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="member-image">
+                                <img class="img-responsive" src="{{x.ExpertImage}}" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h3>{{x.ExpertFullName}}</h3>
+                                <h4>{{x.ExpertSkill}}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!--/#team-->
+    <section id="twitter" class="parallax">
+        <div>
+            <a class="twitter-left-control" href="#twitter-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+            <a class="twitter-right-control" href="#twitter-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="twitter-icon text-center">
+                            <i class="fa fa-pencil" style="color: #000000; font-size: 30px;"></i>
+                            <h4 style="color: #000000;">چکیده اخبار تیم</h4>
+                        </div>
+                        <div id="twitter-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" ng-controller="ControllerAbstracts">
+
+
+                                <div ng-repeat="x in abstracts track by $index" class="item fadeIn {{getActive($index)}}" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                    <p style="color: #000000;">{{x.AbstractText}}</p>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#twitter-->
+    <section id="blog">
+        <div ng-controller="ControllerNews" class="container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+                    <h2>{{Title.NewsTitle}}</h2>
+                    <p>{{Title.NewsText}}</p>
+                </div>
+            </div>
+            <div class="blog-posts">
+                <div >
+                    <div class="row">
+
+                        <div class="col-sm-4 fadeInUp" ng-repeat="x in news track by $index" data-wow-duration="1000ms" data-wow-delay="600ms">
+
+                            <div class="post-thumb">
+                                <div ng-if="isSlider(x)" id="post-carousel{{$index}}" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li ng-repeat="n in x.NewsPirctures track by $index" data-target="#post-carousel{{$parent.$index}}" data-slide-to={{$index}} class={{getClassName($index)}}></li>
+
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="item {{getClassName($index)}}" ng-repeat="n in x.NewsPirctures track by $index">
+                                            <img class="img-responsive" src="{{n.NewsPicAddress}}" alt="" />
+                                        </div>
+
+                                    </div>
+                                    <a class="blog-left-control" href="#post-carousel{{$index}}" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                                    <a class="blog-right-control" href="#post-carousel{{$index}}" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                                </div>
+
+                                <a ng-if="isSlider(x)!=true" href="#">
+                                    <img class="img-responsive" src="{{x.NewsPirctures[0].NewsPicAddress}}" alt="">
+                                </a>
+
+
+                            </div>
+                            <div class="entry-header">
+                                <h3>{{x.NewsTitle}}</h3>
+                                <span class="cetagory">ثبت شده <strong>در</strong></span>
+                                <span class="date">{{ConvertDate(x)}}</span>
+                            </div>
+                            <div class="entry-content">
+                                <p style="font-size: 11.5px; font-weight: bold; text-align: justify;">
+                                    {{x.NewsText}}
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <a ng-click="moreData()" class="btn-loadmore"><i class="fa fa-repeat"></i> اطلاعات بیشتر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#blog-->
+    <section id="contact">
+        <!--<div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div>-->
+        <div id="contact-us" class="parallax">
+            <div class="container">
+                <div class="row">
+                    <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h2>تـمـاس بـا مـا</h2>
+                        <p>دیگاه های متنوع شما عزیزان باعث عملکرد بهتر ما می شود.</p>
+                    </div>
+                </div>
+                <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form id="main-contact-form" method="post" ng-controller="ControllerContactUs">
+                                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" ng-model="c.ContactUsName" name="ContactUsName" class="form-control" placeholder="نام" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input ng-model="c.ContactUsEmail" name="ContactUsEmail" class="form-control" placeholder="آدرس ایمیل" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" ng-model="c.ContactUsSubject" name="ContactUsSubject" class="form-control" placeholder="موضوع" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="ContactUsText" ng-model="c.ContactUsText" id="message" class="form-control" rows="4" placeholder="تایپ متن مورد نظر" required="required"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" ng-click="sendData()" class="btn-submit">ارسال</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                @*<p>
+                                    سیستم پاسخ هوشمند
+                                </p>*@
+                                <ul class="address">
+                                    <li>
+                                        <i class="fa fa-map-marker"></i>
+                                        <span> آدرس :</span> اصفهان
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        <span> تلفن :</span> 000000000 98+
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <span> پست الکترونیک :</span>
+                                        <a href="mailto:someone@yoursite.com"> someone@yoursite.com</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-globe"></i>
+                                        <span> وب سایت :</span>
+                                        <a href="#">www.sitename.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#contact-->
+    <footer id="footer">
+        <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="container text-center">
+                <div class="footer-logo">
+                    <a href="index.html"><img class="img-responsive" src="../images/logo.png" alt=""></a>
+                </div>
+          
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <p>
+                            کپی رایت سال 1395 شرکت دوغ کفیر. کلیه حقوق این وب سایت محفوظ می باشد.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div ng-controller="ControllerLogin" class="modal fade" id="myModallogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">ورود به حساب کاربری</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post" id="login-form">
+                        <fieldset class="userdata">
+                            <input ng-model="user.UserName" id="username" placeholder="نام کاربری" type="text" name="username" class="form-control">
+                            <input ng-model="user.Password" id="password" type="password" placeholder="رمز عبور" name="password" class="form-control">
+                            <div class="remember-wrap">
+                                <input ng-model="user.remember" id="remember" type="checkbox" name="remember" class="inputbox">
+                                <label for="remember">مرا به خاطر بسپار</label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="sendData()" type="button" class="btn btn-primary pull-left">ورود</button>
+                    <button ng-click="ForgetPass()" type="button" class="btn btn-success pull-left">یادم رفته رمز عبور</button>
+                    <img id="loading" style="display:none;width:60px;height:10px" src="~/images/loading.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalregistry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div  ng-controller="ControllerRegister"  class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">عضویت</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post" id="login-form">
+                        <fieldset class="userdata">
+                            <input ng-model="User.UserName" id="username" placeholder="نام کاربری" type="text" name="username" class="form-control">
+                            <input ng-model="User.Password" id="password" type="password" placeholder="رمز عبور" name="password" class="form-control">
+                            <input ng-model="User.Password2" id="password" type="password" placeholder="تکرار رمز عبور" name="password" class="form-control">
+                            <input ng-model="User.UserEmail" id="email" placeholder="ایمیل" type="text" name="username" class="form-control">
+                            <input ng-model="User.UserFirstName" id="email" placeholder="نام" type="text" name="username" class="form-control">
+                            <input ng-model="User.UserLastName" id="email" placeholder="نام خانوادگی" type="text" name="username" class="form-control">
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="sendData()" class="btn btn-primary pull-left">ثبت نام</button>
+                    <img id="loadingReg" style="display:none;width:60px;height:10px" src="~/images/loading.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+
+
+    <script src="~/js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.inview.min.js"></script>
+    <script type="text/javascript" src="../js/wow.min.js"></script>
+    <script type="text/javascript" src="../js/mousescroll.js"></script>
+    <script type="text/javascript" src="../js/smoothscroll.js"></script>
+    <script type="text/javascript" src="../js/jquery.countTo.js"></script>
+    <script type="text/javascript" src="../js/lightbox.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script src="../js/alertify.min.js"></script>
+
+    <script src="/Scripts/Angular/angular.min.js"></script>
+    <script src="/Scripts/Angular/angular-mocks.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+    </script>
+    <script src="/js/JDate.js"></script>
+    <script src="/Scripts/Angular/ManageAngular.js"></script>
+    <script src="/Scripts/Angular/Login.js"></script>
+</body>
+</html>

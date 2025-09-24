@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div ng-controller="ControllerCup">
+    <i ng-click="SendData()" style="font-size:30px;color:#17a10c;float:left;margin-left:20px;cursor:pointer" class="icon-check"></i>
+    <input ng-model="Cup.CupTitle" class="form-control" placeholder="عنوان اصلی" type="text" />
+    <br />
+    <table  class="table">
+        
+        <tr>
+            <td><input ng-model="Cup.CupFirstTitle" class="form-control" placeholder="عنوان قسمت اول" type="text" /></td>
+            <td><input ng-model="Cup.CupFirstPercent" class="form-control" placeholder="درصد" type="text" /></td>
+        </tr>
+
+        <tr>
+            <td><input ng-model="Cup.CupSecoundTitle" class="form-control" placeholder="عنوان قسمت دوم" type="text" /></td>
+            <td><input ng-model="Cup.CupSecoundPercent" class="form-control" placeholder="درصد" type="text" /></td>
+        </tr>
+
+        <tr>
+            <td><input ng-model="Cup.CupThirdTitle" class="form-control" placeholder="عنوان قسمت سوم" type="text" /></td>
+            <td><input ng-model="Cup.CupThirdPercent" class="form-control" placeholder="درصد" type="text" /></td>
+        </tr>
+
+        <tr>
+            <td><input ng-model="Cup.CupFourthTitle" class="form-control" placeholder="عنوان قسمت چهارم" type="text" /></td>
+            <td><input ng-model="Cup.CupFourthPercent" class="form-control" placeholder="درصد" type="text" /></td>
+        </tr>
+    </table>
+</div>
+
+@section SectionJs
+{
+    
+<script src="~/Areas/Admin/Scripts/Angu_Manage_Cup.js"></script>
+    }
