@@ -21,7 +21,6 @@
 - [Matching Algorithm](#-matching-algorithm)
 - [User Roles](#-user-roles)
 - [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
