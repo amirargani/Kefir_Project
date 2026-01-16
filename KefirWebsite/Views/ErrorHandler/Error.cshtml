@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-reset.css" rel="stylesheet" />
+    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet" />
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="font-family:Tahoma" class="body-404">
+
+    <div class="container">
+
+        <section class="error-wrapper">
+
+            <img src="/css/404_icon.png" /> 
+            <h1>@ViewBag.ErrorCode</h1>
+            
+            <h2>متاسفانه خطای رخ داد</h2>
+            <h2>@ViewBag.ErrorText</h2>           
+            <p class="page-404">لطفا بعدا مراجعه کنید <a href="/Home/Index">بازگشت به صفحه اصلی</a></p>
+        </section>
+
+    </div>
+
+
+
+
+</body>
+</html>

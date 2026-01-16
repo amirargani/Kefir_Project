@@ -1,0 +1,262 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>پنل مدیریت</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Areas/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/css/bootstrap-reset.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/css/style.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/css/style-responsive.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/css/FontInit.css" rel="stylesheet" />
+
+
+    <link href="~/css/alertify.bootstrap.css" rel="stylesheet" />
+    <link href="~/css/alertify.core.css" rel="stylesheet" />
+    <link href="~/css/alertify.default.css" rel="stylesheet" />
+
+</head>
+<body ng-app="myAdminApp">
+    <section id="container" class="">
+
+
+
+        <header class="header white-bg">
+            <div class="sidebar-toggle-box">
+                <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+            </div>
+            <!--logo start-->
+            <a href="#" class="logo">فلت<span>لب</span></a>
+            <!--logo end-->
+
+            <div class="top-nav ">
+                <!--search & user info start-->
+                <ul class="nav pull-left top-menu">
+
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="img/avatar1_small.jpg">
+                            <span class="username">@Session["UserName"]</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li><a href="/Home/SignOut"><i class="icon-key"></i> خروج</a></li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+
+
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+
+
+                    <li class="active">
+                        <a class="" href="/Admin/Home/Index">
+                            <i class="icon-dashboard"></i>
+                            <span>صفحه اصلی</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="" href="ManageProgress">
+                            <i class="icon-dashboard"></i>
+                            <span>مدیریت Progress</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon-th"></i>
+                            <span>مدیریت تصاویر</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="ManageSlide">Slides</a></li>
+                            <li><a class="" href="ManageGallery">گالری تصاویر</a></li>
+                            <li><a class="" href="ManageAbstracts">چکیده ها</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageNews">
+                            <i class="icon-tasks"></i>
+                            <span>مدیریت اخبار</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageExperts">
+                            <i class="icon-male"></i>
+                            <span>مدیریت کارشناسان</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageUsers">
+                            <i class="icon-user"></i>
+                            <span>مدیریت کاربران</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageContactUs">
+                            <i class="icon-file"></i>
+                            <span>مدیریت تماس با ما</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a class="" href="ManageFaq">
+                            <i class="icon-question"></i>
+                            <span>مدیریت FAQ</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageAboutKefir">
+                            <i class="icon-eject"></i>
+                            <span>معرفی کفیر</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="ManageCup">
+                            <i class="icon-glass"></i>
+                            <span>یک فنجان</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row state-overview">
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol terques">
+                                <i class="icon-user"></i>
+                            </div>
+                            <div class="value">
+                                <h1>@TempData["UserCount"]</h1>
+                                <p>کاربران ثبت شده</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol red">
+                                <i class="icon-star-half-empty"></i>
+
+                            </div>
+
+                            <div class="value">
+                                    <input id="AwardCount" type="text" class="form-control" name="Count" value="" style="width:100px;margin:0 auto;font-size:25px;text-align:center" />
+                                    <p>جوایز</p>
+                                         <i  onclick="SendAward()" style="cursor:pointer;font-size:25px;float:left;margin-left:10px;margin-bottom:10px" class="icon-edit"></i>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol yellow">
+                                <i class="icon-tags"></i>
+                            </div>
+                            <div class="value">
+                                <h1>@TempData["MessageCount"]</h1>
+                                <p>پیام های جدید</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol blue">
+                                <i class="icon-bar-chart"></i>
+                            </div>
+                            <div class="value">
+                                <h1>@HttpContext.Current.Application["Online"]</h1>
+                                <p>کاربران آنلاین</p>
+                            </div>
+                        </section>
+                    </div>
+
+                </div>
+                @RenderBody()
+            </section>
+
+        </section>
+        
+
+        <script src="~/Areas/Admin/js/jquery.js"></script>
+        <script src="~/Areas/Admin/js/jquery-1.8.3.min.js"></script>
+        <script src="~/Areas/Admin/js/bootstrap.min.js"></script>
+        <script src="~/Areas/Admin/js/jquery.nicescroll.js"></script>
+        <script src="~/Areas/Admin/js/jquery.scrollTo.min.js"></script>
+        <script src="~/Areas/Admin/js/jquery.sparkline.js"></script>
+        <script src="~/Areas/Admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+        <script src="~/Areas/Admin/js/owl.carousel.js"></script>
+        <script src="~/Areas/Admin/js/sparkline-chart.js"></script>
+        <script src="~/Areas/Admin/js/easy-pie-chart.js"></script>
+        <script src="~/Areas/Admin/js/common-scripts.js"></script>
+        <script src="~/Scripts/Angular/angular.min.js"></script>
+        <script src="~/Scripts/Angular/angular-mocks.js"></script>
+        <script src="~/Areas/Admin/js/jquery.customSelect.min.js"></script>
+        <script src="~/js/JDate.js"></script>
+        <script src="~/js/alertify.min.js"></script>
+        <script src="~/js/jquery.serializeObject.min.js"></script>
+        <script>
+            var Adminapp = angular.module('myAdminApp', []);
+
+        </script>
+
+        @RenderSection("SectionJs", false)
+        <script src="~/Areas/Admin/Scripts/Angu_Manage_Main.js"></script>        
+        <script>
+        
+
+
+            //owl carousel
+
+            $(document).ready(function () {
+                $("#owl-demo").owlCarousel({
+                    navigation: true,
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
+
+                });
+            });
+
+            //custom select box
+
+            $(function () {
+                $('select.styled').customSelect();
+            });
+
+        </script>
+
+
+</body>
+</html>

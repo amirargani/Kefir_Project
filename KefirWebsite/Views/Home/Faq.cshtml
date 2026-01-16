@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        @@font-face {
+    font-family: 'B-Yekan';
+    src: url('../fonts/B-Yekan.eot');
+    src: url("../fonts/B-Yekan.ttf") format("truetype"), url('../fonts/B-Yekan.eot?#iefix') format('embedded-opentype'), url('../fonts/B-Yekan.woff') format('woff'), url('../fonts/B-Yekan.ttf') format('opentype'), url('../fonts/B-Yekan.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+    </style>
+    <link href="~/css/FaqStyle.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/Angular/angular.min.js"></script>
+    <script src="~/Scripts/Angular/angular-mocks.js"></script>
+    <script src="~/Scripts/Angular/ManageAngularFAQ.js"></script>
+    <title>سوالات متداول</title>
+</head>
+<body style="font-family:B-Yekan;background-color:#f3f3f3">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center">
+                <img style="height:250px" src="~/images/faq.png" />
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-app="myApp" ng-controller="ControllerFAQ" class="container" style="background-color:white">
+        <div class="row" style="padding:10px;">
+
+            <div class="col-md-6" style="padding-left:20px">
+                <a href="/Home/Index">
+                    <span style="float:left;font-size:25px" class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="col-md-6">
+                <h4><b>سوالات متداول</b></h4>
+            </div>
+            
+            <div class="col-md-12" id="splitter"></div>
+        </div>
+
+
+
+        <div ng-repeat="x in FAQs" class="row" style="padding:10px;">
+            <p class="QuestionP">
+                {{x.QuestionText}}
+            </p>
+            <p class="answerP">
+                {{x.Answer}}
+            </p>
+            <div class="SmallSplit"></div>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
