@@ -1,9 +1,10 @@
 # 📚 Kefir Project – Intelligent FAQ Matching System
 
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE.txt)
-[![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
-[![Language](https://img.shields.io/badge/language-C%23-green.svg)]()
-[![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.8-purple.svg)]()
+[![License](https://img.shields.io/badge/License-Apache_2.0-D22128?style=for-the-badge&logo=apache)](LICENSE.txt)
+[![Language](https://img.shields.io/badge/Language-C%23-239120.svg?style=for-the-badge&logo=csharp)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge&logo=windows)](https://www.microsoft.com/en-us/windows)
+[![Framework](https://img.shields.io/badge/.NET_Framework-4.8-512BD4.svg?style=for-the-badge&logo=.net&logoColor=white)](https://versionsof.net/framework/)
+[![Database](https://img.shields.io/badge/Database-SQL_Server-005A9C?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://www.microsoft.com/en-us/sql-server)
 > An intelligent FAQ web application that automatically matches user questions to existing FAQs using machine learning techniques. Developed as part of a Bachelor's thesis project.
 
 ---
