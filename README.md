@@ -442,4 +442,5 @@ Contributions are welcome! Please follow these guidelines:
 - UI components from Bootstrap and Font Awesome
 
 ---
+
 *Developed by Amir Argani*
