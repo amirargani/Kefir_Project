@@ -5,6 +5,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge&logo=windows)](https://www.microsoft.com/en-us/windows)
 [![Framework](https://img.shields.io/badge/.NET_Framework-4.8-512BD4.svg?style=for-the-badge&logo=.net&logoColor=white)](https://versionsof.net/framework/)
 [![AngularJS](https://img.shields.io/badge/AngularJS-1.5.8-E23237?style=for-the-badge&logo=angularjs&logoColor=white)](https://angularjs.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v3.0.0-563d7c?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com/)
 [![Database](https://img.shields.io/badge/Database-SQL_Server-005A9C?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://www.microsoft.com/en-us/sql-server)
 > An intelligent FAQ web application that automatically matches user questions to existing FAQs using machine learning techniques. Developed as part of a Bachelor's thesis project.
 
