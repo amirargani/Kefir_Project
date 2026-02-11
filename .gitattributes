@@ -39,6 +39,8 @@
 # 1. Mark folders as third-party (vendored)
 KefirWebsite/Scripts/Angular/** linguist-vendored
 KefirWebsite/Scripts/jquery* linguist-vendored
+KefirWebsite/Content/DataTables/** linguist-vendored
+KefirWebsite/assets/font-awesome/** linguist-vendored
 
 # 2. Force show your personal JavaScript and CSS
 KefirWebsite/Scripts/*.js -linguist-vendored -linguist-generated linguist-detectable linguist-language=JavaScript
